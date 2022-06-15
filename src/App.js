@@ -1,66 +1,74 @@
 import "./App.css";
 import React, { useState } from "react";
 
-const data = {
+const videoData = {
   tutorialVideos: [
     {
       id: 1,
-      title: "RightOn! Overview",
-      src: "https://www.youtube.com/embed/sUlnToE2bqQ",
+      title: "Disappointment",
+      src: "https://www.youtube.com/embed/wqlZ0mLgDzk",
     },
     {
       id: 2,
-      title: "Host & Display Overview",
-      src: "https://www.youtube.com/embed/IcrEa8pa0K8",
+      title: "Computer Chronicles: Laptops?",
+      src: "https://www.youtube.com/embed/zRCBepOHaYk",
+    },
+    {
+      id: 3,
+      title: "Tkay Maidza <3",
+      src: "https://www.youtube.com/embed/i-AiWZOkpHA",
+    },
+    {
+      id: 4,
+      title: "This Code Tho",
+      src: "https://www.youtube.com/embed/mqFLXayD6e8",
+    },
+    {
+      id: 5,
+      title: "Bless It",
+      src: "https://www.youtube.com/embed/ts0vYOVRkj8",
     },
   ],
 };
 
 function App() {
-  const [currentVideo, setCurrentVideo] = useState(
-    data.tutorialVideos[0].src,
-    data.tutorialVideos[0].title
-  );
+  const { tutorialVideos } = videoData;
+  const [currentVideo, setCurrentVideo] = useState(videoData.tutorialVideos[0]);
 
-  const handleClick1 = () => {
-    setCurrentVideo(data.tutorialVideos[0].src, data.tutorialVideos[0].title);
+  const handleVideoClick = (vid) => {
+    setCurrentVideo(vid);
   };
-  const handleClick2 = () => {
-    setCurrentVideo(data.tutorialVideos[1].src, data.tutorialVideos[1].title);
-  };
+
+  const videoLink = tutorialVideos.map((video, index) => (
+    <button
+      className="video-buttons"
+      onClick={() => handleVideoClick(video)}
+      key={index}
+    >
+      {video.title}
+    </button>
+  ));
 
   return (
-    <div>
+    <div className="App">
       <div className="tutorial-video-panel">
-        <h4 className="tutorial-videos-header-text">Tutorial Videos</h4>
-        <div className="tutorial-videos-panel">
-          <button
-            onClick={() => handleClick1()}
-            className="tutorial-videos-text"
-          >
-            {data.tutorialVideos[0].title}
-          </button>
-          <br />
-          <br />
-          <button
-            onClick={() => handleClick2()}
-            className="tutorial-videos-text"
-          >
-            {data.tutorialVideos[1].title}
-          </button>
-        </div>
+        <h1 className="tutorial-videos-header-text">Some Vids I Luv</h1>
+
+        <div className="tutorial-videos-panel">{videoLink}</div>
+        <br />
       </div>
-      <br />
-      <br />
-      <iframe
-        width="860"
-        height="483"
-        src={currentVideo}
-        title={currentVideo}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      <div>
+        <iframe
+          className="tutorial-video-iframe"
+          width="860"
+          height="483"
+          src={currentVideo.src}
+          title={currentVideo.title}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   );
 }
