@@ -53,7 +53,6 @@ function App() {
     <div className="App">
       <div className="tutorial-video-panel">
         <h1 className="tutorial-videos-header-text">Some Vids I Luv</h1>
-
         <div className="tutorial-videos-panel">{videoLink}</div>
         <br />
       </div>

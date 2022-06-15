@@ -3,9 +3,8 @@
 }
 
 body{
-  
   background: linear-gradient(to top right, #140ad0b5 0%, #ed0e9496 100%);
-   min-height: 100vh;
+  min-height: 100vh;
 }
 
 .video-buttons{
@@ -20,7 +19,6 @@ body{
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-
 }
 
 .video-buttons:hover{
